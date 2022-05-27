@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 import unittest
+from selenium.webdriver.common.by import By
 
 driver_path = r'D:\GoogleDrive\chromedriver.exe'
 link2 = 'http://suninjuly.github.io/registration2.html'
@@ -19,26 +20,29 @@ class TestRegistration1(unittest.TestCase):
 		browser = self.browser
 		browser.get(link1)
 
-		input1 = browser.find_elements_by_css_selector(".first_block .first")
+		#input1 = browser.find_elements_by_css_selector(".first_block .first")
+		input1 = browser.find_elements(By.CSS_SELECTOR(".first_block .first"))
 		self.assertEqual(len(input1),1,"NoSuchElementException:FirstName")
 		input1[0].send_keys('il')
 
-		input1 = browser.find_elements_by_css_selector(".first_block .second")
+		#input1 = browser.find_elements_by_css_selector(".first_block .second")
+		input1 = browser.find_elements(By.CSS_SELECTOR(".first_block .second"))
 		self.assertEqual(len(input1),1,"NoSuchElementException:SecondName")
 		input1[0].send_keys('val')
 
-		input1 = browser.find_elements_by_css_selector(".first_block .third")
+		#input1 = browser.find_elements_by_css_selector(".first_block .third")
+		input1 = browser.find_elements(By.CSS_SELECTOR(".first_block .third"))
 		self.assertEqual(len(input1),1,"NoSuchElementException:Email")
 		input1[0].send_keys('il@fake.com')
 
 		# Отправляем заполненную форму
-		button = browser.find_element_by_css_selector("button.btn")
+		button = browser.find_element(By.CSS_SELECTOR("button.btn"))
 		button.click()
 
 		time.sleep(1)
 
 		# находим элемент, содержащий текст
-		welcome_text_elt = browser.find_element_by_tag_name("h1")
+		welcome_text_elt = browser.find_element(By.TAG_NAME("h1"))
 		# записываем в переменную welcome_text текст из элемента welcome_text_elt
 		welcome_text = welcome_text_elt.text
 		self.assertEqual("Congratulations! You have successfully registered!",welcome_text,'NoSuchElementException:WelcomeText')
@@ -48,26 +52,30 @@ class TestRegistration1(unittest.TestCase):
 		browser = self.browser
 		browser.get(link2)
 
-		input1 = browser.find_elements_by_css_selector(".first_block .first")
+		#input1 = browser.find_elements_by_css_selector(".first_block .first")
+		input1 = browser.find_elements(By.CSS_SELECTOR(".first_block .first"))
 		self.assertEqual(len(input1),1,"NoSuchElementException:FirstName")
 		input1[0].send_keys('il')
 
-		input1 = browser.find_elements_by_css_selector(".first_block .second")
+		#input1 = browser.find_elements_by_css_selector(".first_block .second")
+		input1 = browser.find_elements(By.CSS_SELECTOR(".first_block .second"))
 		self.assertEqual(len(input1),1,"NoSuchElementException:SecondName")
 		input1[0].send_keys('val')
 
-		input1 = browser.find_elements_by_css_selector(".first_block .third")
+		#input1 = browser.find_elements_by_css_selector(".first_block .third")
+		input1 = browser.find_elements(By.CSS_SELECTOR(".first_block .third"))
 		self.assertEqual(len(input1),1,"NoSuchElementException:Email")
 		input1[0].send_keys('il@fake.com')
 
 		# Отправляем заполненную форму
-		button = browser.find_element_by_css_selector("button.btn")
+		button = browser.find_element(By.CSS_SELECTOR("button.btn"))
 		button.click()
+
 
 		time.sleep(1)
 
 		# находим элемент, содержащий текст
-		welcome_text_elt = browser.find_element_by_tag_name("h1")
+		welcome_text_elt = browser.find_element(By.TAG_NAME("h1"))
 		# записываем в переменную welcome_text текст из элемента welcome_text_elt
 		welcome_text = welcome_text_elt.text
 		self.assertEqual("Congratulations! You have successfully registered!",welcome_text,'NoSuchElementException:WelcomeText')
